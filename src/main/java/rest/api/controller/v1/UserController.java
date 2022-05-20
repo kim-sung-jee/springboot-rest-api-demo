@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import rest.api.advice.exception.CUserNotFoundException;
 import rest.api.entity.User;
 import rest.api.model.response.CommonResult;
 import rest.api.model.response.ListResult;
@@ -30,8 +31,9 @@ public class UserController {
 
     @ApiOperation(value="회원 단건 조회",notes="userId로 회원을 조회한다.")
     @GetMapping(value="/user/{msrl}")
-    public SingleResult<User> findUserById(@ApiParam(value = "회원ID",required = true) @PathVariable long msrl){
-        return responseService.getSingleResult(userJpaRepo.findById(msrl).orElse(null));
+    public SingleResult<User> findUserById(@ApiParam(value = "회원ID",required = true) @PathVariable long msrl)
+    {
+        return responseService.getSingleResult(userJpaRepo.findById(msrl).orElseThrow(CUserNotFoundException::new));
     }
 
     @ApiOperation(value="회원 입력",notes="회원을 입력한다.")

@@ -7,6 +7,11 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     properties.hibernate.hbm2ddl.auto: update
     showSql: true
+
+  messages:
+    basename: i18n/exception
+    encoding: UTF-8
+
 # 이부분 머지
   mvc:
     pathmatch:
