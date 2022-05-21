@@ -1,0 +1,10 @@
+# exception_en.yml
+emailSigninFailed:
+  code: "-1001"
+  msg: "Your account does not exist or your email or password is incorrect."
+
+# exception_ko.yml
+  // exception_en.yml
+accessDenied:
+  code: "-1003"
+  msg: "A resource that can not be accessed with the privileges it has."
